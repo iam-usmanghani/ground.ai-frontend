@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -7,4 +7,12 @@ import { RouterModule } from '@angular/router';
     imports: [RouterModule],
     template: `<router-outlet></router-outlet>`
 })
-export class AppComponent {}
+export class AppComponent {
+
+    constructor(private _router: Router){
+        let token = localStorage.getItem("accessToken");
+        if(!token){
+            this._router.navigateByUrl('/auth/login');
+        }
+    }
+}
