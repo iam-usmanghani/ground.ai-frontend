@@ -28,8 +28,8 @@ export class SignUpComponent {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
@@ -39,17 +39,17 @@ export class SignUpComponent {
 
   onSignUp() {
 
-    const firstName = this.signupForm.get('firstName')?.value;
-    const lastName = this.signupForm.get('lastName')?.value;
+    const fname = this.signupForm.get('fname')?.value;
+    const lname = this.signupForm.get('lname')?.value;
     const email = this.signupForm.get('email')?.value;
     const password = this.signupForm.get('password')?.value;
     const confirmPassword = this.signupForm.get('confirmPassword')?.value;
 
-    if (!firstName) {
+    if (!fname) {
       this.service.add({ severity: 'warn', summary: 'Please enter first name' });
       return;
     }
-    if (!lastName) {
+    if (!lname) {
       this.service.add({ severity: 'warn', summary: 'Please enter last name' });
       return;
     }
