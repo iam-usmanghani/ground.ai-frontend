@@ -11,7 +11,7 @@ export class AppComponent {
 
     constructor(private _router: Router){
         let token = localStorage.getItem("accessToken");
-        if(!token){
+        if(!token || token?.length < 15){
             this._router.navigateByUrl('/auth/login');
         }
     }

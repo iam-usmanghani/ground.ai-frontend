@@ -46,7 +46,7 @@ export class LoginComponent {
         next: (response: any) => {
           if (response && response.statusCode === 200) {
             if (response.data.access_token) {
-              localStorage.setItem('accessToken', response.token);
+              localStorage.setItem('accessToken', response.access_token);
               this._router.navigateByUrl('');
             }
           } else if (response && response.statusCode === 404) {
